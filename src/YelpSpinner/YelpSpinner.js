@@ -1,5 +1,5 @@
-export default function Spinner(props){
-  console.log(props);
-
-  return <></>;
+export default function Spinner(){
+  return <div>
+    <img className='spinner' src="/tina.gif" alt="tina spinner" />
+  </div>;
 }

@@ -147,6 +147,12 @@ label p{
   object-fit: contain;
 }
 
+.yelp-card h1{
+  width: 100%;
+  object-fit: contain;
+  margin: 10px 0;
+}
+
 .yelp-card{
   background-color: goldenrod;
   border: 10px groove cyan;
