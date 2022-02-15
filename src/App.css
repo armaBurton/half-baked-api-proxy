@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .App, body, html, #root {
@@ -24,7 +26,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,11 +72,11 @@ section li {
 label {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 5px;
 }
 
-.pokemon form{
+.pokemon form, .yelp form{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -91,10 +93,80 @@ image{
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  margin-top:30px;
+  padding: 20px;
+  border: 10px ridge gold;
+  border-radius: 10px;
+}
+
+.pokemon-card:hover{
+  border: 10px groove gold;
 }
 
 .abilities{
   width: 80%;
   display: flex;
   justify-content: space-between;
+}
+
+.pokemon-card img {
+  object-fit: contain;
+  width: 100%;
+}
+
+label p, label{
+  font-size: .75rem;
+}
+
+label{
+  font-weight: 700;
+}
+
+label p{
+  font-weight: 300;
+}
+
+.pokemon-card label{
+  align-items: flex-start;
+}
+
+.attack{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  text-align: left;
+}
+
+.spinner{
+  width: 100%;
+}
+
+.yelp-card img{
+  width: 100%;
+  object-fit: contain;
+}
+
+.yelp-card{
+  background-color: goldenrod;
+  border: 10px groove cyan;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.yelp-card div{
+  margin-bottom: 20px;;
+}
+
+.rating{
+  display: flex;
+  justify-content: space-around;
+}
+
+.space{
+  margin-right: 5px;
+}
+
+.space:last-child{
+  margin-right: 0;
 }
