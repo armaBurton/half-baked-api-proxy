@@ -141,3 +141,32 @@ label p{
 .spinner{
   width: 100%;
 }
+
+.yelp-card img{
+  width: 100%;
+  object-fit: contain;
+}
+
+.yelp-card{
+  background-color: goldenrod;
+  border: 10px groove cyan;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.yelp-card div{
+  margin-bottom: 20px;;
+}
+
+.rating{
+  display: flex;
+  justify-content: space-around;
+}
+
+.space{
+  margin-right: 5px;
+}
+
+.space:last-child{
+  margin-right: 0;
+}
