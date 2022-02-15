@@ -46,7 +46,6 @@
   }
 }
 
-
 section {
   width: 30%;
   height: 100%;
@@ -69,5 +68,33 @@ section li {
 }
 
 label {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.pokemon form{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+image{
+  width: 500px;
+  height: auto;
+}
+
+.pokemon-card{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.abilities{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
 }

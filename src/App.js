@@ -6,9 +6,10 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <img src="./images/pikachu.gif" alt="" />
       <PokemonSearch />
       <YelpSearch />
-    { /* stretch goal: <WeatherSearch /> */ }
+      { /* stretch goal: <WeatherSearch /> */ }
     </div>
   );
 }
