@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import WeatherSpinner from './WeatherSpinner/WeatherSpinner';
 import RenderWeather from './RenderWeather/RenderWeather';
+import App from './App';
 
 export default function WeatherSearch() {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +21,22 @@ export default function WeatherSearch() {
     setWeather(data);
     setIsLoading(false);
   }
+
+  const weatherObj = {
+    name: '',
+    weather: [
+      { 
+        description: '' 
+      },
+    ],
+    main:{
+      temp: 0,
+      temp_min: 0,
+      temp_max: 0,
+      pressure: 0,
+      humidity: 0
+    }
+  };
 
   return (
     <section className='weather'>
@@ -46,7 +63,9 @@ export default function WeatherSearch() {
       {
         isLoading 
           ? <WeatherSpinner />
-          : <RenderWeather weather={weather} state={state}/> 
+          : weather.name === undefined
+            ? <RenderWeather weather={weatherObj} state={state} />
+            : <RenderWeather weather={weather} state={state}/> 
       } 
     </section>
   );
