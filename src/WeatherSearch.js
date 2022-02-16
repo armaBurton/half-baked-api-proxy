@@ -1,36 +1,72 @@
 import { useState } from 'react';
+import WeatherSpinner from './WeatherSpinner/WeatherSpinner';
+import RenderWeather from './RenderWeather/RenderWeather';
+import App from './App';
 
 export default function WeatherSearch() {
   const [isLoading, setIsLoading] = useState(false);
-  const [search, setSearch] = useState('Portland OR');
   const [weather, setWeather] = useState([]);
   const [city, setCity] = useState(`portland`);
   const [state, setState] = useState(`or`);
-  const [country, setCountry] = useState(`USA`);
-      // you'll need to track your weather search results, the loading state, and a form field for location with a default value.
+  const [country, setCountry] = useState(`US`);
   
   async function handleWeatherSubmit(e) {
     e.preventDefault();
-      
-        // set the loading state to true
-        // use fetch to make a request to your netlify weather function. Be sure to pass the location as a query param in the URL
-      
-  
-        // put the jsonified data in state and set the loading state to false
+    
+    setIsLoading(true);
+
+    const response = await fetch(`/.netlify/functions/weather?city=${city.toLowerCase()}&state=${state.toLowerCase()}&country=${country}`);
+    const data = await response.json();
+
+    setWeather(data);
+    setIsLoading(false);
   }
-      
+
+  const weatherObj = {
+    name: '',
+    weather: [
+      { 
+        description: '' 
+      },
+    ],
+    main:{
+      temp: 0,
+      temp_min: 0,
+      temp_max: 0,
+      pressure: 0,
+      humidity: 0
+    }
+  };
+
   return (
     <section className='weather'>
-      {/* make the fetch on submit */}
-      <form>
+      <form onSubmit={handleWeatherSubmit}>
         <label>
             Search weather for a city
-          {/* add inputs/labels for city name, state, and country, using all the things we need with react forms. Don't forget to use the value property to sync these up with the default values in react state */}
+          <div className="input-holder">
+            <label>
+              City
+              <input value={city} onChange={e => setCity(e.target.value)}/>
+            </label>
+            <label>
+              State
+              <input value={state} onChange={e => setState(e.target.value)} />
+            </label>
+            <label>
+              Country
+              <input value={country} onChange={e => setCountry(e.target.value)} />
+            </label>
+          </div>
           <button>Get weather</button>
         </label>
       </form>
-      {/* Make a ForecastList component to import and use here. Use a ternery to display a loading spinner (make a <Spinner /> component for this) if the data is still loading. */}
+      {
+        isLoading 
+          ? <WeatherSpinner />
+          : weather.name === undefined
+            ? <RenderWeather weather={weatherObj} state={state} />
+            : <RenderWeather weather={weather} state={state}/> 
+      } 
     </section>
   );
-
 }
