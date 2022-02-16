@@ -10,7 +10,8 @@ exports.handler = async (event) => {
     const lat = latLongJson[0].lat;
     const lon = latLongJson[0].lon;
 
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=imperial`);
+    // const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=imperial`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${process.env.OPEN_WEATHER_API_KEY}&units=imperial`);
 
     const data = await response.json();
 

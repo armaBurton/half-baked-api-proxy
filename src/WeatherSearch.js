@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import WeatherSpinner from './WeatherSpinner/WeatherSpinner';
 import RenderWeather from './RenderWeather/RenderWeather';
+import RenderHistory from './RenderHistory/RenderHistory';
 
 export default function WeatherSearch() {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,22 +21,6 @@ export default function WeatherSearch() {
     setWeather(data);
     setIsLoading(false);
   }
-
-  const weatherObj = {
-    name: '',
-    weather: [
-      { 
-        description: '' 
-      },
-    ],
-    main:{
-      temp: 0,
-      temp_min: 0,
-      temp_max: 0,
-      pressure: 0,
-      humidity: 0
-    }
-  };
 
   return (
     <section className='weather'>
@@ -60,12 +45,17 @@ export default function WeatherSearch() {
         </label>
       </form>
       {
-        isLoading 
-          ? <WeatherSpinner />
-          : weather.name === undefined
-            ? <RenderWeather weather={weatherObj} state={state} />
-            : <RenderWeather weather={weather} state={state}/> 
+        isLoading
+          ? <></>
+          : <RenderWeather weather={weather.current} city={city} state={state}/>
       } 
+      {
+        isLoading
+          ? <WeatherSpinner />
+          : weather.daily === undefined
+            ? <></>
+            : weather.daily.map((day, i) => <RenderHistory key={day + i} day={day} />)
+      }
     </section>
   );
 }
