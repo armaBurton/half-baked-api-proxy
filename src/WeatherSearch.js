@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import WeatherSpinner from './WeatherSpinner/WeatherSpinner';
 import RenderWeather from './RenderWeather/RenderWeather';
+import RenderHistory from './RenderHistory/RenderHistory';
 
 export default function WeatherSearch() {
   const [isLoading, setIsLoading] = useState(false);
@@ -37,6 +38,12 @@ export default function WeatherSearch() {
     }
   };
 
+  console.log(`||********************************`);
+  console.log(`||                                `);
+  console.log(`||   `, weather);
+  console.log(`||                                `);
+  console.log(`||********************************`);
+
   return (
     <section className='weather'>
       <form onSubmit={handleWeatherSubmit}>
@@ -60,12 +67,17 @@ export default function WeatherSearch() {
         </label>
       </form>
       {
-        isLoading 
-          ? <WeatherSpinner />
-          : weather.name === undefined
-            ? <RenderWeather weather={weatherObj} state={state} />
-            : <RenderWeather weather={weather} state={state}/> 
+        isLoading
+          ? <></>
+          : <RenderWeather weather={weather.current} city={city} state={state}/>
       } 
+      {
+        isLoading
+          ? <WeatherSpinner />
+          : weather.daily === undefined
+            ? <></>
+            : weather.daily.map((day, i) => <RenderHistory key={day + i} day={day} />)
+      }
     </section>
   );
 }
