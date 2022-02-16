@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import WeatherSpinner from './WeatherSpinner/WeatherSpinner';
 import RenderWeather from './RenderWeather/RenderWeather';
-import App from './App';
 
 export default function WeatherSearch() {
   const [isLoading, setIsLoading] = useState(false);

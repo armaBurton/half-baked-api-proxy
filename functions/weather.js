@@ -1,4 +1,3 @@
-const request = require('superagent');
 const fetch = require('node-fetch');
 
 require('dotenv').config();
@@ -21,7 +20,6 @@ exports.handler = async (event) => {
       body: JSON.stringify(data),
     };
   } catch (error) {
-    console.log(error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed fetching data' }),
