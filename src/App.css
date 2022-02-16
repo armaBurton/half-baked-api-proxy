@@ -59,6 +59,7 @@ section {
 
 .weather {
   background-color: lightblue;
+  padding: 0 5px;
 }
 
 .pokemon {
@@ -175,4 +176,41 @@ label p{
 
 .space:last-child{
   margin-right: 0;
+}
+
+.input-holder{
+  width: 100%;
+  display: flex;
+  gap: 5px;
+}
+
+.input-holder label{
+  display: flex;
+  align-items: flex-start;
+}
+
+.input-holder input{
+  width: 100%;
+}
+
+.temp{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+h1 span{
+  text-transform: uppercase;
+}
+
+.description{
+  text-transform: capitalize;
+}
+
+.weather-card{
+  background-color: orange;
+  border: 10px groove purple;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 30px;
 }
