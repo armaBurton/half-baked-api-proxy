@@ -22,28 +22,6 @@ export default function WeatherSearch() {
     setIsLoading(false);
   }
 
-  const weatherObj = {
-    name: '',
-    weather: [
-      { 
-        description: '' 
-      },
-    ],
-    main:{
-      temp: 0,
-      temp_min: 0,
-      temp_max: 0,
-      pressure: 0,
-      humidity: 0
-    }
-  };
-
-  console.log(`||********************************`);
-  console.log(`||                                `);
-  console.log(`||   `, weather);
-  console.log(`||                                `);
-  console.log(`||********************************`);
-
   return (
     <section className='weather'>
       <form onSubmit={handleWeatherSubmit}>
